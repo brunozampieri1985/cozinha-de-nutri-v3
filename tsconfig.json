@@ -1,20 +1,32 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+   "compilerOptions": {
+      "target": "es5",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "baseUrl": ".",
+      "paths": {
+         "@components/*": ["src/lib/components/*"],
+         "@contexts/*": ["src/lib/contexts/*"],
+         "@interfaces/*": ["src/lib/interfaces/*"],
+         "@database/*": ["src/lib/database/*"],
+         "@factory/*": ["src/lib/factory/*"],
+         "@helpers/*": ["src/lib/helpers/*"],
+         "@hooks/*": ["src/lib/hooks/*"],
+         "@validation/*": ["src/lib/validation/*"],
+         "@services/*": ["src/lib/services/*"]
+      }
+   },
+   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+   "exclude": ["node_modules"]
 }
