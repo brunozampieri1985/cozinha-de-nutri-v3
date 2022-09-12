@@ -8,7 +8,7 @@
    --shadow-text: 0 0 10px rgba(0, 0, 0, 0.5);
    --shadow-primary: 0 0 10px var(--clr-primary);
    --shadow-secondary: 0 0 10px var(--clr-secondary);
-   --gradient-background: linear-gradient(315deg, #f0a86e, #b2f5ea, #f0a86e);
+   --gradient-background: linear-gradient(90deg, #ecb78b, #b2f5ea, #b2f5ea, #c396e7);
 }
 
 
@@ -25,7 +25,7 @@ html,
 body {
    font-family: 'Poppins', sans-serif;
    background: var(--gradient-background);
-   color: var(--clr-text;);
+   color: var(--clr-text);
 }
 
 a {
@@ -700,3 +700,39 @@ a {
       transform: rotate(360deg)
    }
 }
+
+/* Delivery Info */
+.delivery {
+   display: flex;
+   position: absolute;
+   width: 100%;
+   top: 0;
+   left: 0;
+   flex-direction: column;
+   padding: 120px 20px 0 20px;
+   height: 100vh;
+   background-color: var(--clr-background);
+}
+
+.delivery-info {
+   max-width: 1000px;
+   margin: 0 auto;
+}
+
+.delivery-info h1 {
+   text-align: center;
+}
+
+.delivery-info ul {
+   padding-left: 25px;
+   margin: 15px 0;
+}
+
+.delivery-info div {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+}
+
+
