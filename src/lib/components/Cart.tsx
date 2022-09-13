@@ -18,8 +18,7 @@ const Cart: React.FC = () => {
       totalQuantityOnCart,
       removeFromCart,
       increaseQuantity,
-      decreaseQuantity,
-      calculateTotalCart,
+      decreaseQuantity,      
       cartSummary,
       clearCart,
    } = useStore()
