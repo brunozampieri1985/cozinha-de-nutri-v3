@@ -9,7 +9,7 @@ const ProductList: React.FC = () => {
    const [filter, setFilter] = useState<string>('')
    const [filterCategory, setFilterCategory] = useState('Todas')
    const [showFilters, setShowFilters] = useState(false)
-   const { products, filteredProducts, categories } = useStore()
+   const { filteredProducts, categories } = useStore()
    const filtered = filteredProducts(filter, filterCategory)
 
    return (
@@ -21,6 +21,8 @@ const ProductList: React.FC = () => {
                <FaFilter />
                &nbsp;{showFilters ? 'Esconder Filtros' : 'Filtros'}
             </Button>
+            &nbsp;
+            <p>({filtered.length})</p>
          </div>
          {showFilters && (
             <div className="product-list-filter">

@@ -179,11 +179,14 @@ a {
    justify-content: center;
    align-items: center;
    flex-direction: column;
+   max-width: 800px;
+   margin: 0 auto;
 }
 
 .product-list-filter__toggle {
    display: flex;
    justify-content: center;
+   align-items: center;
    padding: 5px;
 }
 
@@ -203,13 +206,30 @@ a {
 }
 
 .product-list-filter__category select {
-   height: 40px;
+   height: 36px;
    background-color: var(--clr-background);
    outline: none;
    width: 100%;
    border: 0;
    box-shadow: var(--shadow-text);
    border-radius: 6px;
+}
+
+@media (min-width: 768px) {
+   .product-list-filter {
+      flex-direction: row;      
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;
+   }
+   .product-list-filter__input {
+      width: 100%;
+   }
+
+   .product-list-filter__category {
+      padding: 0;
+      translate: 0 -10px;
+   }
 }
 
 /* Product Card */
