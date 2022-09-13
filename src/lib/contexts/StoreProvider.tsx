@@ -27,9 +27,9 @@ type StoreContextType = {
    increaseQuantity: (product: Product) => void
    decreaseQuantity: (product: Product) => void
    removeFromCart: (product: Product) => void
-   calculateTotalCart: () => number
    clearCart: () => void
    cartSummary: () => CartSummary
+   filteredProducts: (input?: string, category?: string) => Product[]
 }
 
 export const StoreContext = createContext({} as StoreContextType)
@@ -75,6 +75,31 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
       setCart(newCart)
    }
 
+   const filteredProducts = (input?: string, category?: string) => {
+      if (!category) category = 'Todas'
+      if (input) {
+         if (category === 'Todas') {
+            return products.filter((product) => {
+               if (product.title.toLowerCase().includes(input.toLowerCase()))
+                  return product
+            })
+         } else {
+            return products.filter((product) => {
+               if (
+                  product.title.toLowerCase().includes(input.toLowerCase()) &&
+                  product.category === category
+               )
+                  return product
+            })
+         }
+      } else {
+         if (category === 'Todas') return products
+         else return products.filter((product) => {
+            if (product.category === category) return product
+         })
+      }
+   }
+
    const decreaseQuantity = (product: Product) => {
       if (quantityOnCart(product.id) === 1) {
          removeFromCart(product)
@@ -116,14 +141,6 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
       setCart([])
    }
 
-   const calculateTotalCart = () => {
-      const subtotal = CalculateSubtotal(cart)
-      const delivery = CalculateDeliveryRate(cart)
-      const discount = subtotal * CalculateDiscount(cart)
-      const total = subtotal - discount + delivery
-      return total
-   }
-
    const cartSummary = () => {
       const subtotal = CalculateSubtotal(cart)
       const delivery = CalculateDeliveryRate(cart)
@@ -154,9 +171,9 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
             increaseQuantity,
             removeFromCart,
             totalQuantityOnCart,
-            calculateTotalCart,
             clearCart,
             cartSummary,
+            filteredProducts
          }}>
          {children}
       </StoreContext.Provider>
