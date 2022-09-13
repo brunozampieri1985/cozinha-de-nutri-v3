@@ -702,7 +702,7 @@ a {
 }
 
 /* Delivery Info */
-.delivery {
+.info-page-wrapper {
    display: flex;
    position: absolute;
    width: 100%;
@@ -714,25 +714,31 @@ a {
    background-color: var(--clr-background);
 }
 
-.delivery-info {
+.page-info {
    max-width: 1000px;
    margin: 0 auto;
 }
 
-.delivery-info h1 {
+.page-info h1 {
    text-align: center;
 }
 
-.delivery-info ul {
+.page-info ul {
    padding-left: 25px;
    margin: 15px 0;
 }
 
-.delivery-info div {
+.page-info div {
    display: flex;
    align-items: center;
    justify-content: center;
    padding: 20px;
 }
 
+.discount-table {
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+}
 
