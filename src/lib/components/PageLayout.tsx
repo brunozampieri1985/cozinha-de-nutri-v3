@@ -16,7 +16,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 
    const metaTitle = title ?? 'Comida de Verdade'
    const metaDesc = description ?? 'Comida de verdade em Peruíbe'
-   
+
    const fullTitle = `Cozinha de Nutri - ${metaTitle}`
    const fullDesc = `Cozinha de Nutri - ${metaDesc}`
 
@@ -27,7 +27,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             <meta name="description" content={fullDesc} />
             <meta
                name="viewport"
-               content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+               content="minimum-scale=1, maximum-scale=5 initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
             />
             <link rel="icon" href="/favicon.ico" />
          </Head>

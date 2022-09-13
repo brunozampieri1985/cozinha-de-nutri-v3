@@ -4,11 +4,26 @@ import '../styles/ReactToastify.css'
 import type { AppProps } from 'next/app'
 import StoreProvider from '@contexts/StoreProvider'
 import { ToastContainer } from 'react-toastify'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import Router from 'next/router'
+import Spinner from '@components/Spinner'
 
 function MyApp({ Component, pageProps }: AppProps) {
+   const [isLoading, setIsLoading] = useState<boolean>(false)
+
+   Router.events.on('beforeHistoryChange', () => {
+      setIsLoading(true)
+   })
+
+   Router.events.on('routeChangeStart', () => {
+      setIsLoading(true)
+   })
+
+   Router.events.on('routeChangeComplete', () => {
+      setIsLoading(false)
+   })
+
    useEffect(() => {
-      console.log('serviceWorker' in navigator)
       if ('serviceWorker' in navigator) {
          window.addEventListener('load', function () {
             navigator.serviceWorker.register('/sw.js').then(
@@ -29,7 +44,11 @@ function MyApp({ Component, pageProps }: AppProps) {
    return (
       <StoreProvider>
          <ToastContainer />
-         <Component {...pageProps} />
+         {isLoading ? (
+            <Spinner size={150} text="Carregando produtos..." />
+         ) : (
+            <Component {...pageProps} />
+         )}
       </StoreProvider>
    )
 }
