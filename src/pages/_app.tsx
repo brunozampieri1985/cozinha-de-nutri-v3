@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <StoreProvider>
          <ToastContainer />
          {isLoading ? (
-            <Spinner size={150} text="Carregando produtos..." />
+            <Spinner size={150} text="Carregando..." />
          ) : (
             <Component {...pageProps} />
          )}
