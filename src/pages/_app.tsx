@@ -4,7 +4,7 @@ import '../styles/ReactToastify.css'
 import type { AppProps } from 'next/app'
 import StoreProvider from '@contexts/StoreProvider'
 import { ToastContainer } from 'react-toastify'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Router from 'next/router'
 import Spinner from '@components/Spinner'
 
