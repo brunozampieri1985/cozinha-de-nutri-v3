@@ -5,7 +5,7 @@ import Router from 'next/router'
 
 const Descontos: NextPage = () => {
    return (
-      <PageLayout>
+      <PageLayout title={'Descontos'}>
          <div className="info-page-wrapper">
             <div className="page-info">
                <h1>Política de Descontos</h1>

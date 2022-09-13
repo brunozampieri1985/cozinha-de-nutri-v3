@@ -5,7 +5,7 @@ import Router from 'next/router'
 
 const Entrega: NextPage = () => {
    return (
-      <PageLayout>
+      <PageLayout title={'Política de Entrega'}>
          <div className="info-page-wrapper">
             <div className="page-info">
                <h1>Política de Entregas</h1>
