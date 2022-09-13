@@ -9,6 +9,7 @@ import CalculateDiscount from '@helpers/CalculateDiscount'
 import LocalCart from '@helpers/LocalCart'
 import Buyer from '@interfaces/Buyer'
 import LocalBuyer from '@helpers/LocalBuyer'
+import Spinner from '@components/Spinner'
 
 type CartSummary = {
    subtotal: number
@@ -37,6 +38,7 @@ export const StoreContext = createContext({} as StoreContextType)
 const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
    children,
 }) => {
+   const [isLoading, setIsLoading] = useState(true)
    const [products, setProducts] = useState<Product[]>([])
    const [cart, setCart] = useState<OrderItem[]>([])
    const [buyer, setBuyer] = useState<Buyer>({} as Buyer)
@@ -157,7 +159,10 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
       fetchProducts()
       setCart(LocalCart.get())
       setBuyer(LocalBuyer.get())
+      setIsLoading(false)
    }, [])
+
+   if (isLoading) return <Spinner size={150} text='' />
 
    return (
       <StoreContext.Provider
