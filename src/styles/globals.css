@@ -808,8 +808,11 @@ a {
 
 .socials {
    position: fixed;
-   bottom: 50%;
-   right: 0;
+   top: 35px;
+   right: 75px;
+   display: flex;
+   gap: 15px;
+   z-index: 9999;
 }
 
 .whatsapp {
@@ -822,6 +825,10 @@ a {
    height: 30px;
    display: flex;
    cursor: pointer;
+   border-radius: 50%;
+   box-shadow: 0 0 10px #25d366;
+
+
 }
 
 .instagram {
@@ -834,30 +841,17 @@ a {
    height: 30px;
    display: flex;
    cursor: pointer;
+   border-radius: 50%;
+   box-shadow: 0 0 10px #e1306c;
+
 }
 
 @media (min-width: 768px) {
    .socials {        
-       bottom: 50%;
-       right: 20px;
-       display: flex;        
-       flex-direction: column;
-       gap: 10px;
+       top: 50%;
+       right: 20px;       
+       flex-direction: column;       
    }
-
-   .whatsapp, .instagram {
-       width: 40px;
-       height: 40px;
-       font-size: 30px;
-       border-radius: 50%;
-   }
-
-   .whatsapp {
-       box-shadow: 0 0 10px #25d366;
-   }
-
-   .instagram {
-       box-shadow: 0 0 10px #e1306c;
-   }
+  
 }
 
