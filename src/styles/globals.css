@@ -1,17 +1,15 @@
 :root {
    --clr-background: rgba(255, 255, 255, 0.7);
    --clr-text: #1a202c;
-   --clr-primary: #319795;
-   --clr-primary-hover: #38b2ac;
+   --clr-primary: #50a808;
+   --clr-primary-hover: #5bc406;
    --clr-secondary: #dd6b20;
    --clr-secondary-hover: #ed8936;
    --shadow-text: 0 0 10px rgba(0, 0, 0, 0.5);
    --shadow-primary: 0 0 10px var(--clr-primary);
    --shadow-secondary: 0 0 10px var(--clr-secondary);
-   --gradient-background: linear-gradient(90deg, #ecb78b, #b2f5ea, #b2f5ea, #c396e7);
+   --gradient-background: linear-gradient(315deg, #ecb78b, #b2f5b8);
 }
-
-
 
 *,
 *::after,
@@ -213,7 +211,7 @@ a {
 
 .product-card__badge {
    padding: 5px;
-   background-color: var(--clr-primary);
+   background-color: #777;
    color: white;
    min-width: 80px;
    align-items: center;

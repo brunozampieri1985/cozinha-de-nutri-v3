@@ -37,9 +37,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {FormatCurrency(product.price)}
          </div>
          <div className="product-card__action">
-            <Button variant="neutral" onClick={() => handleAddToCart(product)}>
+            <Button onClick={() => handleAddToCart(product)}>
                <FaCartPlus fontSize={20} />
-               &nbsp;Adicionar ao Carrinho
+               &nbsp;Adicionar
             </Button>
          </div>
       </div>
