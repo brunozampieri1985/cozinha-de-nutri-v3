@@ -147,14 +147,17 @@ a {
 /* Page Layout */
 
 .page-layout {
-   min-height: 100vh;
+   min-height: 100vh;   
+}
+
+.page-layout main {
+   padding-top: 110px;
+   padding-bottom: 74px;
 }
 
 
 @media (min-width: 768px) {
-   .page-layout main {
-      padding-top: 110px;
-      padding-bottom: 74px;
+   .page-layout main {    
       max-width: 1500px;
       margin: 0 auto;
    }
