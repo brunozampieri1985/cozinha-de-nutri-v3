@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { ReactNode } from 'react'
 import Navbar from './Navbar'
+import Socials from './Socials'
 
 type PageLayoutProps = {
    children: ReactNode
@@ -13,7 +14,6 @@ const PageLayout: React.FC<PageLayoutProps> = ({
    title,
    description,
 }) => {
-
    const metaTitle = title ?? 'Comida de Verdade'
    const metaDesc = description ?? 'Comida de verdade em Peruíbe'
 
@@ -35,6 +35,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
             <Navbar />
          </header>
          <main>{children}</main>
+         <Socials />
       </div>
    )
 }
