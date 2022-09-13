@@ -2,10 +2,12 @@ import type { NextPage } from 'next'
 import PageLayout from '@components/PageLayout'
 import ProductList from '@components/ProductList'
 import Cart from '@components/Cart'
+import InstallButton from '@components/InstallButton'
 
 const Home: NextPage = () => {
    return (
       <PageLayout>
+         <InstallButton/>
          <ProductList />
          <Cart />
       </PageLayout>
