@@ -1,9 +1,8 @@
 import type { NextPage } from 'next'
 import PageLayout from '@components/PageLayout'
-import Button from '@components/Button'
-import Router from 'next/router'
+import ContactForm from '@components/ContactForm'
 
-const Entrega: NextPage = () => {
+const Contato: NextPage = () => {
    return (
       <PageLayout title={'Contato'}>
          <div className="info-page-wrapper">
@@ -11,11 +10,11 @@ const Entrega: NextPage = () => {
                <h1>Contato</h1>
                <hr />
                <br />
-               
+               <ContactForm/>
             </div>
          </div>
       </PageLayout>
    )
 }
 
-export default Entrega
+export default Contato
