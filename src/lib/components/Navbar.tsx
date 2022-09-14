@@ -1,7 +1,9 @@
-import { useState } from 'react'
 import Link from 'next/link'
-import Logo from '@components/Logo'
+import { useState } from 'react'
 import { FaHome, FaTruck, FaMoneyBill, FaEnvelope } from 'react-icons/fa'
+import Logo from '@components/Logo'
+import InstallButton from './InstallButton'
+
 
 const Navbar: React.FC = () => {
    const [isMenuActive, setIsMenuActive] = useState(false)
@@ -51,6 +53,7 @@ const Navbar: React.FC = () => {
                      </Link>
                   </div>
                </li>
+            <InstallButton />
             </ul>
          </div>
       </nav>
