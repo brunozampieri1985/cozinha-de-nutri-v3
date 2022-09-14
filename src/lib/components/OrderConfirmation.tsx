@@ -19,7 +19,9 @@ const OrderConfirmation: React.FC = () => {
    const [isLoading, setIsLoading] = useState(false)
    const [buyerData, setBuyerData] = useState<Buyer>(buyer)
 
-   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+   const handleInputChange = (
+      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+   ) => {
       const { value, name } = event.target
       setBuyerData({
          ...buyerData,
@@ -68,7 +70,7 @@ const OrderConfirmation: React.FC = () => {
          toast.error('Seu carrinho está vazio!')
          Router.push('/')
       }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
    return (
