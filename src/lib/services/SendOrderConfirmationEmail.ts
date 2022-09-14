@@ -4,7 +4,7 @@ import Buyer from '@interfaces/Buyer'
 import Order from '@interfaces/Order'
 import OrderItem from '@interfaces/OrderItem'
 
-export default class SendMail {
+export default class SendOrderConfirmationEmail {
    order: Order
    buyer: Buyer
    items: OrderItem[]
@@ -57,9 +57,9 @@ export default class SendMail {
       }
 
       await sgMail.send(msgToAdmin)
-      const response1 = await sgMail.send(msgToBuyer)
+      const response = await sgMail.send(msgToBuyer)
       
-      if (response1[0].statusCode === 202) {
+      if (response[0].statusCode === 202) {
          return { status: 202, message: 'Confirmation sent' }
       }
       return { status: 400, message: 'Confirmation error' }

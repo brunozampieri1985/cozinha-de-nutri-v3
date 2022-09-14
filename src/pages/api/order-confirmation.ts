@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import Order from '@interfaces/Order'
-import SendMail from '@services/SendMail'
+import SendOrderConfirmationEmail from '@services/SendOrderConfirmationEmail'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
@@ -10,7 +10,7 @@ export default async function handler(
    if (req.method === 'POST') {
       const { body } = req
       const order = JSON.parse(body) as Order
-      const confirmation = new SendMail(order)
+      const confirmation = new SendOrderConfirmationEmail(order)
       const { status, message } = await confirmation.send()      
       res.status(status).json({ status, message })
    } else {
