@@ -4,6 +4,7 @@ import Button from '@components/Button'
 import validateForm from '@validation/Form'
 import SendMessage from '@factory/SendMessage'
 import { toast } from 'react-toastify'
+import Spinner from './Spinner'
 
 type ContactFormType = {
    name: string
@@ -71,6 +72,8 @@ const ContactForm: React.FC = () => {
          toast.error(`${status} - ${message}`)
       }
    }
+
+   if (isLoading) return <Spinner text='Enviando sua mensagem...' size={150} />
 
    return (
       <div className="contact-form">
