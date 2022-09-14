@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import Input from './Input'
-import Button from './Button'
+import Input from '@components/Input'
+import Button from '@components/Button'
 import validateForm from '@validation/Form'
+import SendMessage from '@factory/SendMessage'
+import { toast } from 'react-toastify'
 
 type ContactFormType = {
    name: string
@@ -11,6 +13,7 @@ type ContactFormType = {
 }
 
 const ContactForm: React.FC = () => {
+   const [isLoading, setIsLoading] = useState(false)
    const [formData, setFormData] = useState<ContactFormType>(
       {} as ContactFormType
    )
@@ -32,6 +35,41 @@ const ContactForm: React.FC = () => {
          name: '',
          phone: '',
       })
+   }
+
+   const errors = () => {
+      const errs = []
+      if (!validateForm.name(formData.name))
+         errs.push('É necessário preencher nome completo.')
+      if (!validateForm.email(formData.email))
+         errs.push('É necessário fornecer um email válido.')
+      if (!validateForm.phone(formData.phone))
+         errs.push('É necessário fornecer um telefone válido.')
+      if (!validateForm.name(formData.message))
+         errs.push('A mensagem não pode ser em branco.')
+      return errs
+   }
+
+   const handleSendMessage = async () => {
+      const errs = errors()
+      if (errs.length > 0) {
+         errs.forEach((e) => toast.error(e))
+         return
+      }
+      setIsLoading(true)
+
+      const { status, message } = await SendMessage(
+         formData.name,
+         formData.email,
+         formData.phone,
+         formData.message
+      )
+      setIsLoading(false)
+      if (status === 202) {
+         toast.success('Agradecemos sua mensagem. Retornaremos em breve.')
+      } else {
+         toast.error(`${status} - ${message}`)
+      }
    }
 
    return (
@@ -74,8 +112,8 @@ const ContactForm: React.FC = () => {
                />
             </div>
             <div className="contact-form-actions">
-               <Button>Enviar</Button>
-               <Button variant="neutral" onClick={() => handleClearForm()}>
+               <Button onClick={handleSendMessage}>Enviar</Button>
+               <Button variant="neutral" onClick={handleClearForm}>
                   Limpar
                </Button>
             </div>
