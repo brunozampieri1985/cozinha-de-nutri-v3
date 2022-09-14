@@ -1,6 +1,4 @@
-
-
-const validateBuyer = {
+const validateForm = {
    name: (name: string | undefined) => {
       if (name?.length === 0 || name === undefined) return null
       if (name.length > 5) return true
@@ -21,4 +19,4 @@ const validateBuyer = {
    }
 }
 
-export default validateBuyer
+export default validateForm

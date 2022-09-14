@@ -2,7 +2,7 @@ import Buyer from '@interfaces/Buyer'
 import CreateOrder from '@factory/CreateOrder'
 import { useStore } from '@contexts/StoreProvider'
 import Input from './Input'
-import validateBuyer from '../validation/Buyer'
+import validateForm from '../validation/Form'
 import { useState } from 'react'
 import FormatCurrency from '@helpers/FormatCurrency'
 import Button from './Button'
@@ -29,15 +29,15 @@ const OrderConfirmation: React.FC = () => {
 
    const errors = () => {
       const errs = []
-      if (!validateBuyer.name(buyerData.name))
+      if (!validateForm.name(buyerData.name))
          errs.push('É necessário preencher nome completo.')
-      if (!validateBuyer.email(buyerData.email))
+      if (!validateForm.email(buyerData.email))
          errs.push('É necessário fornecer um email válido.')
-      if (!validateBuyer.phone(buyerData.phone))
+      if (!validateForm.phone(buyerData.phone))
          errs.push('É necessário fornecer um telefone válido.')
-      if (!validateBuyer.name(buyerData.address))
+      if (!validateForm.name(buyerData.address))
          errs.push('É necessário fornecer um endereço válido.')
-      if (!validateBuyer.name(buyerData.city))
+      if (!validateForm.name(buyerData.city))
          errs.push('É necessário informar sua cidade.')
       return errs
    }
@@ -90,13 +90,13 @@ const OrderConfirmation: React.FC = () => {
                         value={buyerData.name}
                         onChange={(e) => handleInputChange(e)}
                         placeholder="Nome Completo"
-                        valid={validateBuyer.name(buyerData.name)}
+                        valid={validateForm.name(buyerData.name)}
                      />
                      <Input
                         name="email"
                         type="email"
                         placeholder="E-mail"
-                        valid={validateBuyer.email(buyerData.email)}
+                        valid={validateForm.email(buyerData.email)}
                         value={buyerData.email}
                         onChange={(e) => handleInputChange(e)}
                      />
@@ -104,7 +104,7 @@ const OrderConfirmation: React.FC = () => {
                         name="phone"
                         type="tel"
                         placeholder="Telefone"
-                        valid={validateBuyer.phone(buyerData.phone)}
+                        valid={validateForm.phone(buyerData.phone)}
                         value={buyerData.phone}
                         onChange={(e) => handleInputChange(e)}
                      />
@@ -112,7 +112,7 @@ const OrderConfirmation: React.FC = () => {
                         name="address"
                         type="text"
                         placeholder="Endereço"
-                        valid={validateBuyer.name(buyerData.address)}
+                        valid={validateForm.name(buyerData.address)}
                         value={buyerData.address}
                         onChange={(e) => handleInputChange(e)}
                      />
@@ -120,7 +120,7 @@ const OrderConfirmation: React.FC = () => {
                         name="city"
                         type="text"
                         placeholder="Cidade"
-                        valid={validateBuyer.name(buyerData.city)}
+                        valid={validateForm.name(buyerData.city)}
                         value={buyerData.city}
                         onChange={(e) => handleInputChange(e)}
                      />
