@@ -6,8 +6,7 @@ import InstallButton from '@components/InstallButton'
 
 const Home: NextPage = () => {
    return (
-      <PageLayout>
-         <InstallButton/>
+      <PageLayout>         
          <ProductList />
          <Cart />
       </PageLayout>

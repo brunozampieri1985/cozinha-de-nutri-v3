@@ -3,14 +3,21 @@ import Input from './Input'
 import Button from './Button'
 import validateForm from '@validation/Form'
 
-const ContactForm: React.FC = () => {
-   const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      phone: '',
-   })
+type ContactFormType = {
+   name: string
+   email: string
+   phone: string
+   message: string
+}
 
-   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+const ContactForm: React.FC = () => {
+   const [formData, setFormData] = useState<ContactFormType>(
+      {} as ContactFormType
+   )
+
+   const handleInputChange = (
+      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+   ) => {
       const { value, name } = event.target
       setFormData({
          ...formData,
@@ -18,13 +25,22 @@ const ContactForm: React.FC = () => {
       })
    }
 
+   const handleClearForm = () => {
+      setFormData({
+         email: '',
+         message: '',
+         name: '',
+         phone: '',
+      })
+   }
+
    return (
-      <div className="contact">
-         <div className="contact-form">
+      <div className="contact-form">
+         <div className="contact-form-left">
             <Input
                type="text"
                name="name"
-               placeholder="Digite seu nome"
+               placeholder="Nome"
                valid={validateForm.name(formData.name)}
                value={formData.name}
                onChange={(event) => handleInputChange(event)}
@@ -32,7 +48,7 @@ const ContactForm: React.FC = () => {
             <Input
                type="email"
                name="email"
-               placeholder="Digite seu email"
+               placeholder="Email"
                valid={validateForm.email(formData.email)}
                value={formData.email}
                onChange={(event) => handleInputChange(event)}
@@ -40,15 +56,29 @@ const ContactForm: React.FC = () => {
             <Input
                type="tel"
                name="phone"
-               placeholder="Digite seu telefone"
+               placeholder="Telefone"
                valid={validateForm.phone(formData.phone)}
                value={formData.phone}
                onChange={(event) => handleInputChange(event)}
             />
          </div>
-         <div className="contact-form-actions">
-            <Button>Enviar</Button>
-            <Button variant="neutral">Limpar</Button>
+         <div className="contact-form-right">
+            <div className="contact-form-message">
+               <Input
+                  type="textarea"
+                  name="message"
+                  placeholder="Digite sua mensagem"
+                  valid={validateForm.name(formData.message)}
+                  value={formData.message}
+                  onChange={(event) => handleInputChange(event)}
+               />
+            </div>
+            <div className="contact-form-actions">
+               <Button>Enviar</Button>
+               <Button variant="neutral" onClick={() => handleClearForm()}>
+                  Limpar
+               </Button>
+            </div>
          </div>
       </div>
    )

@@ -4,7 +4,9 @@ interface InputProps {
    value: string
    placeholder: string
    name: string
-   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+   onChange?: (
+      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+   ) => void
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,20 +25,38 @@ const Input: React.FC<InputProps> = ({
 
    return (
       <div className="input-box">
-         <input
-            name={name}
-            type={type}
-            placeholder={''}
-            required
-            style={
-               {
-                  '--valid-color': validation(),
-               } as React.CSSProperties
-            }
-            value={value}
-            onChange={onChange}
-         />
-         <span>{placeholder}</span>
+         {type === 'textarea' ? (
+            <textarea
+               name={name}
+               placeholder={placeholder}
+               required
+               style={
+                  {
+                     '--valid-color': validation(),
+                  } as React.CSSProperties
+               }
+               value={value}
+               onChange={onChange}
+            />
+            
+         ) : (
+            <>
+               <input
+                  name={name}
+                  type={type}
+                  placeholder={''}
+                  required
+                  style={
+                     {
+                        '--valid-color': validation(),
+                     } as React.CSSProperties
+                  }
+                  value={value}
+                  onChange={onChange}
+               />
+               <span>{placeholder}</span>
+            </>
+         )}
       </div>
    )
 }

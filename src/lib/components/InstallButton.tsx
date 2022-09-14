@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Button from './Button'
 
-
 const InstallButton: React.FC = () => {
    const [showA2HS, setShowA2HS] = useState(false)
-   const [deferredPrompt, setDeferredPrompt] =
-      useState<any>()
+   const [deferredPrompt, setDeferredPrompt] = useState<any>()
 
-   const handleInstall = (
-      event: any
-   ) => {
+   const handleInstall = (event: any) => {
       event.preventDefault()
       if (deferredPrompt) {
          deferredPrompt.prompt()
