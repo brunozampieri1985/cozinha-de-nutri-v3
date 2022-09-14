@@ -60,6 +60,7 @@ const OrderConfirmation: React.FC = () => {
       if (status === 202) {
          clearCart()
          toast.success('Confirmação enviada com sucesso')
+         Router.push('/')
       } else {
          toast.error(`${status} - ${message}`)
       }
