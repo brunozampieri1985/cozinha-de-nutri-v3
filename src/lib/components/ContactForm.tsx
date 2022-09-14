@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 import Input from './Input'
 import Button from './Button'
 import validateForm from '@validation/Form'
