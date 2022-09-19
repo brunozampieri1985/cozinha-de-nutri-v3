@@ -17,9 +17,9 @@ const Home: NextPage = () => {
       <PageLayout>
          <ProductList />
          <Cart />
-         <Modal closeOnOutsideClick ref={modalRef}>
+         {/* <Modal closeOnOutsideClick ref={modalRef}>
             <DescontosCoponent />
-         </Modal>
+         </Modal> */}
       </PageLayout>
    )
 }
