@@ -10,6 +10,7 @@ import LocalCart from '@helpers/LocalCart'
 import Buyer from '@interfaces/Buyer'
 import LocalBuyer from '@helpers/LocalBuyer'
 import Spinner from '@components/Spinner'
+import LevenshteinDistance from '@helpers/LevenshteinDistance'
 
 type CartSummary = {
    subtotal: number
@@ -80,25 +81,45 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
    const filteredProducts = (input?: string, category?: string) => {
       if (!category) category = 'Todas'
       if (input) {
+         const normalizedString = (string: String) =>
+            string.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
          if (category === 'Todas') {
-            return products.filter((product) => {
-               if (product.title.toLowerCase().includes(input.toLowerCase()))
-                  return product
-            })
+            const regexPattern = `\b?${Array.from(normalizedString(input)).join(
+               '.*'
+            )}\b?`
+            const regex = new RegExp(regexPattern, 'gi')
+
+            return products
+               .filter((item) => normalizedString(item.title).match(regex))
+               .map((product) => ({
+                  ...product,
+                  distance: LevenshteinDistance(input, product.title),
+               }))
+               .sort((a, b) => a.distance - b.distance)
          } else {
-            return products.filter((product) => {
-               if (
-                  product.title.toLowerCase().includes(input.toLowerCase()) &&
-                  product.category === category
+            const regexPattern = `\b?${Array.from(normalizedString(input)).join(
+               '.*'
+            )}\b?`
+            const regex = new RegExp(regexPattern, 'gi')
+
+            return products
+               .filter(
+                  (item) =>
+                     normalizedString(item.title).match(regex) &&
+                     item.category === category
                )
-                  return product
-            })
+               .map((product) => ({
+                  ...product,
+                  distance: LevenshteinDistance(input, product.title),
+               }))
+               .sort((a, b) => a.distance - b.distance)
          }
       } else {
          if (category === 'Todas') return products
-         else return products.filter((product) => {
-            if (product.category === category) return product
-         })
+         else
+            return products.filter((product) => {
+               if (product.category === category) return product
+            })
       }
    }
 
@@ -162,7 +183,7 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
       setIsLoading(false)
    }, [])
 
-   if (isLoading) return <Spinner size={150} text='' />
+   if (isLoading) return <Spinner size={150} text="" />
 
    return (
       <StoreContext.Provider
@@ -178,7 +199,7 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
             totalQuantityOnCart,
             clearCart,
             cartSummary,
-            filteredProducts
+            filteredProducts,
          }}>
          {children}
       </StoreContext.Provider>
