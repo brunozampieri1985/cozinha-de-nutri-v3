@@ -13,8 +13,10 @@ const DescontosCoponent: React.FC = () => (
       <div className="discount-table">
          <table>
             <thead>
-               <th>Quantidade</th>
-               <th>Desconto</th>
+               <tr>
+                  <td><strong>Quantidade</strong></td>
+                  <td><strong>Desconto</strong></td>
+               </tr>
             </thead>
             <tbody>
                <tr>

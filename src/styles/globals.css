@@ -825,6 +825,14 @@ a {
    z-index: 9997;
 }
 
+.socials div a {
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
 .whatsapp {
    background-color: #25d366;
    color: #fff;
