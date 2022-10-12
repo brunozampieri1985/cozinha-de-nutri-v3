@@ -1,9 +1,8 @@
 import OrderItem from '@interfaces/OrderItem'
-import CalculateTotalQuantity from './CalculateTotalQuantity'
+import CalculateSubtotal from './CalculateSubtotal'
 
 export default function CalculateDeliveryRate(items: OrderItem[]): number {
-   const quantity = CalculateTotalQuantity(items)
-   if (items.length === 0) return 0
-   if (quantity < 7) return 6
+   const subtotal = CalculateSubtotal(items)
+   if (subtotal < 100) return 6
    return 0
 }
